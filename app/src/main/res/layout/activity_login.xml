@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Welcome Back !!"
+            android:textSize="35dp"
+            android:textStyle="bold"
+            android:textColor="@color/purple"
+            android:textAlignment="center"/>
+
+        <EditText
+            android:id="@+id/username"
+            android:inputType="text"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:textColorHint="@color/purple"
+            android:drawableLeft="@drawable/baseline_person_24"
+            android:drawablePadding="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/purple"
+            android:hint="Enter your username"
+            android:background="@drawable/account_inputs"
+            android:paddingLeft="10dp"/>
+        <EditText
+            android:id="@+id/password"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:textColorHint="@color/purple"
+            android:drawableLeft="@drawable/baseline_lock_24"
+            android:drawablePadding="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/purple"
+            android:hint="Enter your password"
+            android:background="@drawable/account_inputs"
+            android:paddingLeft="10dp"/>
+        <TextView
+            android:id="@+id/login"
+            android:clickable="true"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="LOGIN"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:background="@drawable/submit_btn"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Don't have an Account?"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:layout_marginTop="100dp"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/register"
+            android:layout_width="90dp"
+            android:layout_height="35dp"
+            android:gravity="center"
+            android:text="Register"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:background="@drawable/submit_btn"
+            android:textAlignment="center"/>
+    </LinearLayout>
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
