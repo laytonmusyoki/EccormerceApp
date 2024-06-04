@@ -8,7 +8,7 @@ public class RetrofitClient {
     public static Retrofit getRetrofitInstance(){
         if(retrofit==null){
             retrofit=new Retrofit.Builder()
-                    .baseUrl("https://shop-qttp.onrender.com//")
+                    .baseUrl("https://shop-qttp.onrender.com/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }

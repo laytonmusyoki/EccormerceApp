@@ -108,6 +108,7 @@
 
 
             <TextView
+                android:id="@+id/addToCart"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:gravity="center"
@@ -118,6 +119,24 @@
                 android:textSize="15dp"
                 android:background="@drawable/account_inputs"
                 android:textColor="@color/black"/>
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="40dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:gravity="left"-->
+<!--                    android:background="@drawable/baseline_favorite_24"/>-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="40dp"-->
+<!--                    android:textAlignment="textEnd"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:background="@drawable/baseline_shopping_cart_24"/>-->
+
+<!--            </LinearLayout>-->
 
         </LinearLayout>
 

@@ -1,13 +1,13 @@
 package com.example.ecormmerce;
 
 public class LoginResponse {
-    String status,access,refresh,message;
+    String status,access,refresh,message,error;
 
     public String getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus() {
         this.status = status;
     }
 
@@ -33,5 +33,13 @@ public class LoginResponse {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
     }
 }

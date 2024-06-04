@@ -99,6 +99,7 @@ public class RegisterActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
                             if(response.isSuccessful()){
+                                Toast.makeText(RegisterActivity.this, ""+response.body().getStatus(), Toast.LENGTH_SHORT).show();
                                 if(response.body().getStatus().equals("201")){
                                     showSnackBar(response.body().getSuccess());
                                     Intent intent=new Intent(RegisterActivity.this,LoginActivity.class);

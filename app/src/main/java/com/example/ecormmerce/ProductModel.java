@@ -1,12 +1,11 @@
 package com.example.ecormmerce;
 
-import android.widget.ImageView;
-
 public class ProductModel {
-    String categories, name, description, price, digital;
-    int image;
+    String id,categories, name, description, price, digital;
+    String image;
 
-    public ProductModel(String categories, String name, String description, String price, String digital, int image) {
+    public ProductModel(String categories, String name,String id, String description, String price, String digital, String image) {
+        this.id=id;
         this.categories = categories;
         this.name = name;
         this.description = description;
@@ -15,6 +14,13 @@ public class ProductModel {
         this.image = image;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
     public String getCategories() {
         return categories;
     }
@@ -55,11 +61,11 @@ public class ProductModel {
         this.digital = digital;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 }

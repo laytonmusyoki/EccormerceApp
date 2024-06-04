@@ -17,7 +17,20 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="110dp"
+                android:id="@+id/all"
+                android:layout_width="115dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginRight="8dp"
+                android:text="All Items"
+                android:background="@drawable/category_btn"/>
+
+
+            <TextView
+                android:id="@+id/desktops"
+                android:layout_width="115dp"
                 android:layout_height="40dp"
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -27,7 +40,8 @@
                 android:background="@drawable/category_btn"/>
 
             <TextView
-                android:layout_width="100dp"
+                android:id="@+id/laptops"
+                android:layout_width="115dp"
                 android:layout_height="40dp"
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -36,18 +50,10 @@
                 android:text="Laptops"
                 android:background="@drawable/category_btn"/>
 
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_marginRight="8dp"
-                android:text="Printers"
-                android:background="@drawable/category_btn"/>
 
             <TextView
-                android:layout_width="100dp"
+                android:id="@+id/phones"
+                android:layout_width="115dp"
                 android:layout_height="40dp"
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -57,7 +63,8 @@
                 android:background="@drawable/category_btn"/>
 
             <TextView
-                android:layout_width="100dp"
+                android:id="@+id/accessories"
+                android:layout_width="115dp"
                 android:layout_height="40dp"
                 android:gravity="center"
                 android:textColor="@color/black"

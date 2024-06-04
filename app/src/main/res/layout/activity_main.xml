@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:background="@color/purple"
     android:layout_height="match_parent"
+    android:background="@color/purple"
     tools:context=".MainActivity">
-
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,27 +14,28 @@
         android:background="@color/white"
         android:orientation="vertical">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:background="@color/purple"
+
+
+
+        <!-- FrameLayout for holding fragments -->
+        <FrameLayout
+            android:id="@+id/frame_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
 
-
-        <include layout="@layout/categories"
-            android:id="@+id/categories"
-            android:layout_below="@id/toolbar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyler"
-            android:layout_marginTop="20dp"
-            android:layout_below="@id/categories"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 
-</RelativeLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_gravity="bottom"
+        android:background="@color/purple"
+        app:itemTextColor="@color/white"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_nav"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
