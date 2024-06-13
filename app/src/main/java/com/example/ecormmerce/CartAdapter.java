@@ -50,75 +50,53 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         String cartImage=cartModels.get(position).getImage();
         String cartQuantity=cartModels.get(position).getQuantity();
         holder.setData(cartName,cartPrice,cartTotal,BASE_URL+cartImage,cartCategory,cartQuantity);
-        addToCart(id,action);
+
+
         holder.minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                action="remove";
-                id=cartId;
-                CartID cartID=new CartID();
-                cartID.setAction(action);
-                cartID.setProductId(id);
-                SharedPreferences sharedPreferences=v.getContext().getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
-                String access=sharedPreferences.getString("ACCESS_TOKEN",null);
-                String AccessToken="Bearer "+access;
-                apiInterface apiInterface=RetrofitClient.getRetrofitInstance().create(com.example.ecormmerce.apiInterface.class);
-                Call<AddItemResponse> call=apiInterface.postCartId(AccessToken,cartID);
-                call.enqueue(new Callback<AddItemResponse>() {
-                    @Override
-                    public void onResponse(Call<AddItemResponse> call, Response<AddItemResponse> response) {
-                        if(response.isSuccessful() && response.body() !=null){
-                            if(response.body().getSuccess().equals("200")){
-                                Toast.makeText(v.getContext(), "Item was removed successfuly", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                        else {
-                            Toast.makeText(v.getContext(), "Failed...", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<AddItemResponse> call, Throwable t) {
-                        Toast.makeText(v.getContext(), ""+t.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                action = "remove";
+                id = cartId;
+                updateCart(v.getContext(), id, action);
             }
         });
+
         holder.add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                action="add";
-                id=cartId;
-                CartID cartID=new CartID();
-                cartID.setAction(action);
-                cartID.setProductId(id);
-                SharedPreferences sharedPreferences=v.getContext().getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
-                String access=sharedPreferences.getString("ACCESS_TOKEN",null);
-                String AccessToken="Bearer "+access;
-                apiInterface apiInterface=RetrofitClient.getRetrofitInstance().create(com.example.ecormmerce.apiInterface.class);
-                Call<AddItemResponse> call=apiInterface.postCartId(AccessToken,cartID);
-                call.enqueue(new Callback<AddItemResponse>() {
-                    @Override
-                    public void onResponse(Call<AddItemResponse> call, Response<AddItemResponse> response) {
-                        if(response.isSuccessful() && response.body() !=null){
-                            if(response.body().getSuccess().equals("200")){
-                                Toast.makeText(v.getContext(), ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<AddItemResponse> call, Throwable t) {
-                        Toast.makeText(v.getContext(), ""+t.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                action = "add";
+                id = cartId;
+                updateCart(v.getContext(), id, action);
             }
         });
     }
 
-    private void addToCart(String id, String action) {
+    private void updateCart(Context context, String id, String action) {
+        CartID cartID = new CartID();
+        cartID.setAction(action);
+        cartID.setProductId(id);
+        SharedPreferences sharedPreferences = context.getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE);
+        String access = sharedPreferences.getString("ACCESS_TOKEN", null);
+        String accessToken = "Bearer " + access;
+        apiInterface apiInterface = RetrofitClient.getRetrofitInstance().create(com.example.ecormmerce.apiInterface.class);
+        Call<AddItemResponse> call = apiInterface.postCartId(accessToken, cartID);
+        call.enqueue(new Callback<AddItemResponse>() {
+            @Override
+            public void onResponse(Call<AddItemResponse> call, Response<AddItemResponse> response) {
+                if(response.isSuccessful() && response.body() !=null){
+                    if(response.body().getSuccess().equals("200")){
+                        Toast.makeText(context, ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
 
+            @Override
+            public void onFailure(Call<AddItemResponse> call, Throwable t) {
+                Toast.makeText(context, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
 
     @Override
     public int getItemCount() {

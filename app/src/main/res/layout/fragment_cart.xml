@@ -19,13 +19,25 @@
         android:id="@+id/toolbar"/>
 
 
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            tools:ignore="MissingClass">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recylerview"
-        android:layout_marginBottom="110dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recylerview"
+                android:layout_marginBottom="110dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
 
         <ProgressBar
             android:id="@+id/progressbar"
