@@ -19,6 +19,11 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.List;
 
 import retrofit2.Call;
@@ -106,17 +111,32 @@ public class RegisterActivity extends AppCompatActivity {
                                     startActivity(intent);
                                     finish();
                                     Toast.makeText(RegisterActivity.this, "" + response.body().getSuccess(), Toast.LENGTH_SHORT).show();
-                                } else if (response.body().getStatus().equals("400")) {
-                                    register.setText("REGISTER");
-                                    register.setEnabled(false);
-                                    List<messageData> errorMessages=response.body().getMessage();
-                                    for(messageData error:errorMessages){
-                                        Toast.makeText(RegisterActivity.this, "Error" + error.getNon_field_errors(), Toast.LENGTH_LONG).show();
+                                }
+                            }
+                            else {
+                                register.setText("REGISTER");
+                                register.setEnabled(true);
+                                String errorMessage = "";
+                                try {
+                                    String errorBodyString = response.errorBody().string();
+                                    JSONObject errorJson = new JSONObject(errorBodyString);
+                                    if (errorJson.has("message")) {
+                                        JSONObject messageJson = errorJson.getJSONObject("message");
+                                        if (messageJson.has("non_field_errors")) {
+                                            JSONArray errorsArray = messageJson.getJSONArray("non_field_errors");
+                                            if (errorsArray.length() > 0) {
+                                                errorMessage += errorsArray.getString(0);
+                                            }
+                                        }
                                     }
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                    errorMessage += "Exception occurred while parsing error";
+                                } catch (JSONException e) {
+                                    throw new RuntimeException(e);
                                 }
-                                else {
-                                    Toast.makeText(RegisterActivity.this, "Something went wrong please try again", Toast.LENGTH_LONG).show();
-                                }
+                                Toast.makeText(RegisterActivity.this, errorMessage, Toast.LENGTH_LONG).show();
+                                showSnackBar(errorMessage);
                             }
                         }
 
@@ -132,7 +152,7 @@ public class RegisterActivity extends AppCompatActivity {
             private void showSnackBar(String message) {
                 Snackbar snackbar = Snackbar.make(coordinatorLayout, message, Snackbar.LENGTH_LONG);
                 View snackbarView = snackbar.getView();
-                snackbarView.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.green)));
+                snackbarView.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.warning)));
                 snackbarView.animate();
                 snackbar.show();
             }

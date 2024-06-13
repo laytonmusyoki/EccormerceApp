@@ -174,7 +174,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void setbackgroundColor(View v) {
-        v.setBackgroundResource(R.drawable.btn_clicked);
+//        v.setBackgroundResource(R.drawable.btn_clicked);
     }
 
     private void initRecycler() {

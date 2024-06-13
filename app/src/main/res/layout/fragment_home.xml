@@ -76,20 +76,12 @@
                 android:id="@+id/recyler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingBottom="100dp"
                 android:layout_below="@id/categories"/>
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
-        android:layout_gravity="bottom"
-        android:background="@color/purple"
-        app:itemTextColor="@color/white"
-        app:labelVisibilityMode="labeled"
-        app:menu="@menu/bottom_nav"/>
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

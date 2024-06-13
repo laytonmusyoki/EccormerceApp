@@ -20,6 +20,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -87,28 +89,36 @@ public class LoginActivity extends AppCompatActivity {
                     call.enqueue(new Callback<LoginResponse>() {
                         @Override
                         public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                            if(response.isSuccessful() && response.body() !=null){
-                                if(response.body().status.equals("200")){
-                                    token=response.body().getAccess();
+                            if (response.isSuccessful() && response.body() != null) {
+                                if (response.body().status.equals("200")) {
+                                    token = response.body().getAccess();
                                     saveAccessToken(token);
-                                    Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                     startActivity(intent);
                                     finish();
-                                }
-                                else if (response.body().status.equals("400")) {
+                                } else {
                                     login.setText("Login");
                                     showSnackBar(response.body().getError());
                                 }
-                                else{
-                                    Toast.makeText(LoginActivity.this, "Something went wrong please try again", Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                // Handle the error response
+                                login.setText("Login");
+                                try {
+                                    String errorResponse = response.errorBody().string();
+                                    JsonObject errorJson = JsonParser.parseString(errorResponse).getAsJsonObject();
+                                    String errorMessage = errorJson.get("error").getAsString();
+                                    showSnackBar(errorMessage);
+                                } catch (Exception e) {
+                                    showSnackBar("Something went wrong, please try again");
+                                    e.printStackTrace();
                                 }
-
                             }
                         }
 
                         @Override
                         public void onFailure(Call<LoginResponse> call, Throwable t) {
-                            Log.d(Tag,t.getMessage());
+                            Log.d(Tag, t.getMessage());
                             login.setText("Login");
                             showSnackBar("Login Failed " + t.getMessage());
                         }

@@ -1,5 +1,7 @@
 package com.example.ecormmerce;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class RegisterResponse {
@@ -34,6 +36,7 @@ public class RegisterResponse {
 }
 
 class messageData{
+    @SerializedName("non_field_errors")
     String non_field_errors;
 
     public String getNon_field_errors() {
@@ -44,3 +47,5 @@ class messageData{
         this.non_field_errors = non_field_errors;
     }
 }
+
+
