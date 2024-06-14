@@ -7,10 +7,10 @@
         android:id="@+id/home"
         android:icon="@drawable/baseline_home_24"/>
 
-    <item
-        android:title="Favorite"
-        android:id="@+id/favorite"
-        android:icon="@drawable/baseline_favorite_24"/>
+<!--    <item-->
+<!--        android:title="Favorite"-->
+<!--        android:id="@+id/favorite"-->
+<!--        android:icon="@drawable/baseline_favorite_24"/>-->
 
     <item
         android:title="Cart"

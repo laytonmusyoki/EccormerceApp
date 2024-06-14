@@ -125,8 +125,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         Fragment selectedFragment=null;
         if(id==R.id.home){
             selectedFragment=new HomeFragment();
-        } else if (id==R.id.favorite) {
-            selectedFragment=new FavoriteFragment();
+        } else if (id==R.id.profile) {
+            selectedFragment=new ProfileFragment();
         }
         else if (id==R.id.cart) {
             selectedFragment=new CartFragment();

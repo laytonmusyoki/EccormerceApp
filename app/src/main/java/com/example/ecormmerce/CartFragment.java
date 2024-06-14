@@ -65,7 +65,7 @@ public class CartFragment extends Fragment {
 
         androidx.appcompat.widget.Toolbar toolbar=view.findViewById(R.id.toolbar);
 
-        toolbar.setTitle("Cart");
+        toolbar.setTitle("My Cart");
         ((AppCompatActivity) requireActivity()).setSupportActionBar(toolbar);
 
 
