@@ -16,9 +16,13 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import com.google.android.material.bottomsheet.BottomSheetDragHandleView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +48,8 @@ public class CartFragment extends Fragment {
 
     SwipeRefreshLayout swipeRefreshLayout;
 
+    Button checkout;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +67,21 @@ public class CartFragment extends Fragment {
         progressBar=view.findViewById(R.id.progressbar);
         linearLayout=view.findViewById(R.id.emptycart);
         swipeRefreshLayout=view.findViewById(R.id.swipeRefreshLayout);
+        checkout=view.findViewById(R.id.checkout);
+
+        checkout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BottomSheetDragHandleView bottomSheetDragHandleView=new BottomSheetDragHandleView(getContext());
+                View bottonSheetView=LayoutInflater.from(getActivity()).inflate(R.layout.bottom_sheet,null);
+
+                EditText phone=bottonSheetView.findViewById(R.id.edit_text_phone_number);
+                Button submit=bottonSheetView.findViewById(R.id.button_submit);
+
+            }
+        });
+
+
 
 
         androidx.appcompat.widget.Toolbar toolbar=view.findViewById(R.id.toolbar);
